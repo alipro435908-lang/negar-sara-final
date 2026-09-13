@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title><%= post.title %> | نگار سرا</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+
+      <a href="/" class="logo">
+        نگار <span>سرا</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="/">خانه</a>
+        <a href="/#gallery">گالری آثار</a>
+        <a href="/#about">درباره ما</a>
+        <a href="/#contact">تماس با ما</a>
+        <a href="/blog">بلاگ</a>
+      </nav>
+
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-content">
+
+        <span class="hero-label">NEGAR SARA</span>
+
+        <h1>
+          <%= post.title %>
+        </h1>
+
+        <% if (post.category) { %>
+          <p>
+            <%= post.category %>
+          </p>
+        <% } %>
+
+      </div>
+    </section>
+
+
+    <section class="container">
+
+      <article class="featured-art">
+
+        <% if (post.image) { %>
+          <img
+            src="<%= post.image %>"
+            alt="<%= post.title %>"
+          >
+        <% } %>
+
+        <div class="art-card-content">
+
+          <% if (post.category) { %>
+            <span class="art-category">
+              <%= post.category %>
+            </span>
+          <% } %>
+
+          <h2>
+            <%= post.title %>
+          </h2>
+
+          <% if (post.content) { %>
+            <p>
+              <%= post.content %>
+            </p>
+          <% } %>
+
+        </div>
+
+      </article>
+
+
+      <div class="about-box">
+
+        <p>
+          از همراهی شما با نگار سرا سپاسگزاریم.
+        </p>
+
+        <a href="/blog" class="btn">
+          بازگشت به بلاگ
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <div class="container footer-content">
+
+      <div>
+        <a href="/" class="logo">
+          نگار <span>سرا</span>
+        </a>
+
+        <p>
+          گالری دیجیتال هنر و خلاقیت
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="/">خانه</a>
+        <a href="/blog">بلاگ</a>
+        <a href="/#gallery">گالری</a>
+        <a href="/#contact">تماس با ما</a>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+      <p>
+        © ۱۴۰۵ نگار سرا | تمامی حقوق محفوظ است.
+      </p>
+    </div>
+
+  </footer>
+
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".nav-links");
+
+      if (nav) {
+        nav.classList.toggle("active");
+      }
+    }
+  </script>
+
+</body>
+</html>
