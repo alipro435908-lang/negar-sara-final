@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>بلاگ | نگار سرا</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+
+      <a href="/" class="logo">
+        نگار <span>سرا</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="/">خانه</a>
+        <a href="/#gallery">گالری آثار</a>
+        <a href="/#about">درباره ما</a>
+        <a href="/#contact">تماس با ما</a>
+        <a href="/blog">بلاگ</a>
+      </nav>
+
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-content">
+
+        <span class="hero-label">NEGAR SARA BLOG</span>
+
+        <h1>
+          بلاگ <span>نگار سرا</span>
+        </h1>
+
+        <p>
+          تازه‌ترین مطالب، داستان‌ها و نوشته‌های هنری نگار سرا
+        </p>
+
+      </div>
+    </section>
+
+
+    <section class="container">
+
+      <div class="section-title">
+        <h2>آخرین مطالب</h2>
+
+        <p class="section-subtitle">
+          مطالب و نوشته‌های منتشرشده در نگار سرا
+        </p>
+      </div>
+
+
+      <% if (posts && posts.length > 0) { %>
+
+        <div class="gallery-grid">
+
+          <% posts.forEach(post => { %>
+
+            <article class="art-card">
+
+              <% if (post.image) { %>
+                <div class="art-card-image">
+                  <img
+                    src="<%= post.image %>"
+                    alt="<%= post.title %>"
+                  >
+                </div>
+              <% } %>
+
+              <div class="art-card-content">
+
+                <% if (post.category) { %>
+                  <span class="art-category">
+                    <%= post.category %>
+                  </span>
+                <% } %>
+
+                <h3>
+                  <%= post.title %>
+                </h3>
+
+                <% if (post.excerpt) { %>
+                  <p>
+                    <%= post.excerpt %>
+                  </p>
+                <% } else if (post.content) { %>
+                  <p>
+                    <%= post.content.substring(0, 150) %>
+                    <% if (post.content.length > 150) { %>...<% } %>
+                  </p>
+                <% } %>
+
+                <a
+                  href="/post/<%= post.slug %>"
+                  class="btn"
+                >
+                  مطالعه مطلب
+                </a>
+
+              </div>
+
+            </article>
+
+          <% }) %>
+
+        </div>
+
+      <% } else { %>
+
+        <div class="about-box">
+
+          <p>
+            هنوز مطلبی منتشر نشده است.
+          </p>
+
+        </div>
+
+      <% } %>
+
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <div class="container footer-content">
+
+      <div>
+        <a href="/" class="logo">
+          نگار <span>سرا</span>
+        </a>
+
+        <p>
+          گالری دیجیتال هنر و خلاقیت
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="/">خانه</a>
+        <a href="/#gallery">گالری</a>
+        <a href="/#about">درباره ما</a>
+        <a href="/#contact">تماس با ما</a>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+      <p>
+        © ۱۴۰۵ نگار سرا | تمامی حقوق محفوظ است.
+      </p>
+    </div>
+
+  </footer>
+
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".nav-links");
+
+      if (nav) {
+        nav.classList.toggle("active");
+      }
+    }
+  </script>
+
+</body>
+</html>
