@@ -1,0 +1,20 @@
+[
+  {
+    "title": "زیبایی بی‌نهایت",
+    "category": "هنر مدرن",
+    "image": "/images/art-1.jpg",
+    "description": "هنر مدرن و خلاقانه"
+  },
+  {
+    "title": "رویای طلایی",
+    "category": "هنر دیجیتال",
+    "image": "/images/art-2.jpg",
+    "description": "ترکیب رنگ و احساس"
+  },
+  {
+    "title": "سکوت رنگ‌ها",
+    "category": "طراحی خلاقانه",
+    "image": "/images/art-3.jpg",
+    "description": "نگاهی متفاوت به هنر"
+  }
+]
