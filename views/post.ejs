@@ -43,11 +43,9 @@
           <%= post.title %>
         </h1>
 
-        <% if (post.category) { %>
-          <p>
-            <%= post.category %>
-          </p>
-        <% } %>
+        <p>
+          نگار سرا
+        </p>
 
       </div>
     </section>
@@ -57,24 +55,34 @@
 
       <article class="featured-art">
 
-        <% if (post.image) { %>
+        <% if (post.cover) { %>
           <img
-            src="<%= post.image %>"
+            src="<%= post.cover %>"
             alt="<%= post.title %>"
           >
         <% } %>
 
         <div class="art-card-content">
 
-          <% if (post.category) { %>
-            <span class="art-category">
-              <%= post.category %>
-            </span>
-          <% } %>
+          <span class="art-category">
+            نگار سرا
+          </span>
 
           <h2>
             <%= post.title %>
           </h2>
+
+          <% if (post.date) { %>
+            <p>
+              تاریخ انتشار: <%= post.date %>
+            </p>
+          <% } %>
+
+          <% if (post.author) { %>
+            <p>
+              نویسنده: <%= post.author %>
+            </p>
+          <% } %>
 
           <% if (post.content) { %>
             <p>
