@@ -6,28 +6,30 @@
 
   <title>نگار سرا | گالری هنری</title>
 
-  <meta name="description"
-        content="نگار سرا؛ گالری دیجیتال آثار هنری، طراحی گرافیک و هنر خلاقانه">
+  <meta
+    name="description"
+    content="نگار سرا؛ گالری دیجیتال آثار هنری، طراحی گرافیک و هنر خلاقانه"
+  >
 
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
-  <!-- ================= HEADER ================= -->
-
+  <!-- Header -->
   <header class="site-header">
-
     <div class="container navbar">
 
-      <a href="#home" class="logo">
-        نگار سرا
-        <span>NEGAR SARA</span>
+      <a href="/" class="logo">
+        نگار <span>سرا</span>
       </a>
 
-      <button class="menu-toggle"
-              type="button"
-              onclick="toggleMenu()">
+      <button
+        class="menu-toggle"
+        type="button"
+        onclick="toggleMenu()"
+        aria-label="باز کردن منو"
+      >
         ☰
       </button>
 
@@ -35,48 +37,44 @@
         <ul class="nav-links" id="navLinks">
 
           <li>
-            <a href="#home" class="active">
-              خانه
-            </a>
+            <a href="/" class="active">خانه</a>
           </li>
 
           <li>
-            <a href="#gallery">
-              گالری آثار
-            </a>
+            <a href="#gallery">گالری آثار</a>
           </li>
 
           <li>
-            <a href="#about">
-              درباره ما
-            </a>
+            <a href="#about">درباره ما</a>
           </li>
 
           <li>
-            <a href="#contact">
-              تماس با ما
-            </a>
+            <a href="#services">خدمات</a>
+          </li>
+
+          <li>
+            <a href="#contact">تماس با ما</a>
+          </li>
+
+          <li>
+            <a href="/blog">بلاگ</a>
           </li>
 
         </ul>
       </nav>
 
     </div>
-
   </header>
 
 
-  <!-- ================= MAIN ================= -->
-
   <main>
 
-    <!-- HERO -->
-
+    <!-- Hero -->
     <section id="home" class="hero">
 
       <div class="container">
 
-        <div class="hero-content fade-in">
+        <div class="hero-content">
 
           <div class="hero-label">
             NEGAR SARA GALLERY
@@ -94,13 +92,11 @@
 
           <div class="hero-actions">
 
-            <a href="#gallery"
-               class="btn btn-primary">
+            <a href="#gallery" class="btn btn-primary">
               مشاهده گالری
             </a>
 
-            <a href="#about"
-               class="btn">
+            <a href="#about" class="btn">
               درباره نگار سرا
             </a>
 
@@ -113,36 +109,29 @@
     </section>
 
 
-    <!-- ================= GALLERY ================= -->
-
+    <!-- Gallery -->
     <section id="gallery">
 
       <div class="container">
 
-        <h2 class="section-title">
-          گالری آثار هنری
-        </h2>
-
-        <p class="section-subtitle">
-          مجموعه‌ای از آثار منتخب هنری نگار سرا
-        </p>
+        <div class="section-title">
+          <h2>گالری آثار هنری</h2>
+          <p class="section-subtitle">
+            مجموعه‌ای از آثار منتخب نگار سرا
+          </p>
+        </div>
 
 
         <div class="gallery-grid">
 
-
-          <!-- ART 1 -->
-
           <article class="art-card">
 
             <div class="art-card-image">
-
               <img
                 src="/images/art-1.jpg"
                 alt="اثر هنری زیبایی بی‌نهایت"
                 loading="lazy"
               >
-
             </div>
 
             <div class="art-card-content">
@@ -164,18 +153,14 @@
           </article>
 
 
-          <!-- ART 2 -->
-
           <article class="art-card">
 
             <div class="art-card-image">
-
               <img
                 src="/images/art-2.jpg"
                 alt="اثر هنری رویای طلایی"
                 loading="lazy"
               >
-
             </div>
 
             <div class="art-card-content">
@@ -197,18 +182,14 @@
           </article>
 
 
-          <!-- ART 3 -->
-
           <article class="art-card">
 
             <div class="art-card-image">
-
               <img
                 src="/images/art-3.jpg"
                 alt="اثر هنری سکوت رنگ‌ها"
                 loading="lazy"
               >
-
             </div>
 
             <div class="art-card-content">
@@ -229,7 +210,6 @@
 
           </article>
 
-
         </div>
 
       </div>
@@ -237,8 +217,7 @@
     </section>
 
 
-    <!-- ================= FEATURED ================= -->
-
+    <!-- Featured -->
     <section>
 
       <div class="container">
@@ -246,13 +225,11 @@
         <div class="featured-art">
 
           <div>
-
             <img
               src="/images/art-1.jpg"
               alt="اثر منتخب نگار سرا"
               loading="lazy"
             >
-
           </div>
 
           <div>
@@ -283,8 +260,197 @@
     </section>
 
 
-    <!-- ================= ABOUT ================= -->
+    <!-- Services -->
+    <section id="services">
 
+      <div class="container">
+
+        <div class="section-title">
+          <h2>خدمات نگار سرا</h2>
+
+          <p class="section-subtitle">
+            خدمات حرفه‌ای برای پروژه‌های خلاقانه شما
+          </p>
+        </div>
+
+
+        <div class="gallery-grid">
+
+          <% if (services && services.length > 0) { %>
+
+            <% services.forEach(service => { %>
+
+              <article class="art-card">
+
+                <div class="art-card-content">
+
+                  <span class="art-category">
+                    خدمات
+                  </span>
+
+                  <h3>
+                    <%= service.title %>
+                  </h3>
+
+                  <p>
+                    <%= service.desc %>
+                  </p>
+
+                </div>
+
+              </article>
+
+            <% }) %>
+
+          <% } else { %>
+
+            <article class="art-card">
+
+              <div class="art-card-content">
+
+                <h3>
+                  خدمات هنری و طراحی
+                </h3>
+
+                <p>
+                  ارائه خدمات حرفه‌ای در زمینه هنر،
+                  طراحی و پروژه‌های خلاقانه.
+                </p>
+
+              </div>
+
+            </article>
+
+          <% } %>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Latest Blog Posts -->
+    <section>
+
+      <div class="container">
+
+        <div class="section-title">
+
+          <h2>
+            آخرین مطالب
+          </h2>
+
+          <p class="section-subtitle">
+            تازه‌ترین نوشته‌های نگار سرا
+          </p>
+
+        </div>
+
+
+        <% if (posts && posts.length > 0) { %>
+
+          <div class="gallery-grid">
+
+            <% posts.forEach(post => { %>
+
+              <article class="art-card">
+
+                <% if (post.cover) { %>
+
+                  <div class="art-card-image">
+
+                    <img
+                      src="<%= post.cover %>"
+                      alt="<%= post.title %>"
+                      loading="lazy"
+                    >
+
+                  </div>
+
+                <% } %>
+
+
+                <div class="art-card-content">
+
+                  <span class="art-category">
+                    بلاگ
+                  </span>
+
+                  <h3>
+                    <%= post.title %>
+                  </h3>
+
+
+                  <% if (post.excerpt) { %>
+
+                    <p>
+                      <%= post.excerpt %>
+                    </p>
+
+                  <% } else if (post.content) { %>
+
+                    <p>
+                      <%= post.content.substring(0, 120) %>
+                      <% if (post.content.length > 120) { %>
+                        ...
+                      <% } %>
+                    </p>
+
+                  <% } %>
+
+
+                  <% if (post.date) { %>
+
+                    <p>
+                      <%= post.date %>
+                    </p>
+
+                  <% } %>
+
+
+                  <a
+                    href="/post/<%= post.slug %>"
+                    class="btn"
+                  >
+                    مطالعه مطلب
+                  </a>
+
+                </div>
+
+              </article>
+
+            <% }) %>
+
+          </div>
+
+
+          <div style="text-align:center; margin-top:30px;">
+
+            <a href="/blog" class="btn btn-primary">
+              مشاهده همه مطالب
+            </a>
+
+          </div>
+
+        <% } else { %>
+
+          <div class="about-box">
+
+            <p>
+              هنوز مطلبی منتشر نشده است.
+            </p>
+
+          </div>
+
+        <% } %>
+
+      </div>
+
+    </section>
+
+
+    <!-- About -->
     <section id="about">
 
       <div class="container">
@@ -309,31 +475,63 @@
     </section>
 
 
-    <!-- ================= CONTACT ================= -->
-
+    <!-- Contact / Order -->
     <section id="contact">
 
       <div class="container">
 
-        <h2 class="section-title">
-          با ما در ارتباط باشید
-        </h2>
+        <div class="section-title">
 
-        <p class="section-subtitle">
-          برای ارتباط با گالری نگار سرا پیام خود را ارسال کنید.
-        </p>
+          <h2>
+            سفارش و همکاری
+          </h2>
+
+          <p class="section-subtitle">
+            برای سفارش پروژه یا همکاری با نگار سرا
+            فرم زیر را تکمیل کنید.
+          </p>
+
+        </div>
+
+
+        <% if (query && query.order === "success") { %>
+
+          <div class="about-box">
+
+            <p>
+              درخواست شما با موفقیت ثبت شد.
+              به‌زودی با شما تماس خواهیم گرفت.
+            </p>
+
+          </div>
+
+        <% } %>
+
+
+        <% if (query && query.order === "error") { %>
+
+          <div class="about-box">
+
+            <p>
+              لطفاً نام، شماره تماس و نوع خدمات را
+              به‌درستی وارد کنید.
+            </p>
+
+          </div>
+
+        <% } %>
 
 
         <form
           class="contact-form"
-          action="/contact"
+          action="/order"
           method="POST"
         >
 
           <div class="form-group">
 
             <label for="name">
-              نام
+              نام و نام خانوادگی
             </label>
 
             <input
@@ -341,23 +539,6 @@
               name="name"
               type="text"
               placeholder="نام شما"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="email">
-              ایمیل
-            </label>
-
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="ایمیل شما"
               required
             >
 
@@ -375,6 +556,70 @@
               name="phone"
               type="tel"
               placeholder="شماره تماس"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="service">
+              نوع خدمات
+            </label>
+
+            <select
+              id="service"
+              name="service"
+              required
+            >
+
+              <option value="">
+                انتخاب خدمات
+              </option>
+
+              <% if (services && services.length > 0) { %>
+
+                <% services.forEach(service => { %>
+
+                  <option value="<%= service.title %>">
+                    <%= service.title %>
+                  </option>
+
+                <% }) %>
+
+              <% } else { %>
+
+                <option value="هویت بصری و طراحی گرافیک">
+                  هویت بصری و طراحی گرافیک
+                </option>
+
+                <option value="عکاسی مفهومی و تبلیغاتی">
+                  عکاسی مفهومی و تبلیغاتی
+                </option>
+
+                <option value="کارگردانی هنری پروژه">
+                  کارگردانی هنری پروژه
+                </option>
+
+              <% } %>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="budget">
+              بودجه تقریبی
+            </label>
+
+            <input
+              id="budget"
+              name="budget"
+              type="text"
+              placeholder="بودجه تقریبی پروژه"
             >
 
           </div>
@@ -383,14 +628,13 @@
           <div class="form-group">
 
             <label for="message">
-              پیام
+              توضیحات پروژه
             </label>
 
             <textarea
               id="message"
               name="message"
-              placeholder="پیام خود را بنویسید..."
-              required
+              placeholder="توضیحات پروژه یا درخواست خود را بنویسید..."
             ></textarea>
 
           </div>
@@ -400,7 +644,7 @@
             type="submit"
             class="btn btn-primary"
           >
-            ارسال پیام
+            ارسال درخواست
           </button>
 
         </form>
@@ -412,20 +656,18 @@
   </main>
 
 
-  <!-- ================= FOOTER ================= -->
-
+  <!-- Footer -->
   <footer class="site-footer">
 
     <div class="container">
 
       <div class="footer-content">
 
-
         <div>
 
-          <h3>
-            نگار سرا
-          </h3>
+          <a href="/" class="logo">
+            نگار <span>سرا</span>
+          </a>
 
           <p>
             گالری دیجیتال هنر، طراحی و خلاقیت.
@@ -440,27 +682,25 @@
             دسترسی سریع
           </h3>
 
-          <ul class="footer-links">
+          <div class="footer-links">
 
-            <li>
-              <a href="#home">
-                خانه
-              </a>
-            </li>
+            <a href="/">
+              خانه
+            </a>
 
-            <li>
-              <a href="#gallery">
-                گالری آثار
-              </a>
-            </li>
+            <a href="#gallery">
+              گالری آثار
+            </a>
 
-            <li>
-              <a href="#about">
-                درباره ما
-              </a>
-            </li>
+            <a href="#about">
+              درباره ما
+            </a>
 
-          </ul>
+            <a href="/blog">
+              بلاگ
+            </a>
+
+          </div>
 
         </div>
 
@@ -472,19 +712,20 @@
           </h3>
 
           <p>
-            برای ارتباط و همکاری
+            برای سفارش پروژه و همکاری
             با نگار سرا در تماس باشید.
           </p>
 
         </div>
-
 
       </div>
 
 
       <div class="footer-bottom">
 
-        © ۱۴۰۵ نگار سرا | تمامی حقوق محفوظ است.
+        <p>
+          © ۱۴۰۵ نگار سرا | تمامی حقوق محفوظ است.
+        </p>
 
       </div>
 
@@ -493,31 +734,30 @@
   </footer>
 
 
-  <!-- ================= JAVASCRIPT ================= -->
-
   <script>
-
     function toggleMenu() {
-
       const nav = document.getElementById("navLinks");
 
-      nav.classList.toggle("open");
-
+      if (nav) {
+        nav.classList.toggle("open");
+      }
     }
 
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(function(link) {
 
-    document.querySelectorAll(".nav-links a").forEach(function(link) {
+        link.addEventListener("click", function() {
 
-      link.addEventListener("click", function() {
+          const nav = document.getElementById("navLinks");
 
-        document
-          .getElementById("navLinks")
-          .classList.remove("open");
+          if (nav) {
+            nav.classList.remove("open");
+          }
+
+        });
 
       });
-
-    });
-
   </script>
 
 </body>
