@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>پنل مدیریت | نگار سرا</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+
+      <a href="/" class="logo">
+        نگار <span>سرا</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="/">مشاهده سایت</a>
+        <a href="/blog">بلاگ</a>
+        <a href="/admin/logout">خروج</a>
+      </nav>
+
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-content">
+
+        <span class="hero-label">NEGAR SARA ADMIN</span>
+
+        <h1>
+          پنل <span>مدیریت</span>
+        </h1>
+
+        <p>
+          مدیریت مطالب و سفارش‌های نگار سرا
+        </p>
+
+      </div>
+    </section>
+
+
+    <section class="container">
+
+      <div class="section-title">
+        <h2>مدیریت نگار سرا</h2>
+
+        <p class="section-subtitle">
+          از این بخش می‌توانید محتوای سایت و سفارش‌ها را مدیریت کنید.
+        </p>
+      </div>
+
+
+      <div class="gallery-grid">
+
+        <article class="art-card">
+          <div class="art-card-content">
+            <span class="art-category">مطالب</span>
+
+            <h3>مدیریت بلاگ</h3>
+
+            <p>
+              مشاهده و مدیریت مطالب منتشرشده در سایت.
+            </p>
+
+            <a href="/blog" class="btn">
+              مشاهده بلاگ
+            </a>
+          </div>
+        </article>
+
+
+        <article class="art-card">
+          <div class="art-card-content">
+            <span class="art-category">سفارش‌ها</span>
+
+            <h3>مدیریت سفارش‌ها</h3>
+
+            <p>
+              مشاهده و بررسی سفارش‌های ثبت‌شده توسط کاربران.
+            </p>
+
+            <a href="/admin/orders" class="btn">
+              مشاهده سفارش‌ها
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+
+      <% if (typeof posts !== "undefined" && posts) { %>
+
+        <div class="about-box">
+
+          <h3>تعداد مطالب</h3>
+
+          <p>
+            <%= posts.length %> مطلب در سایت ثبت شده است.
+          </p>
+
+        </div>
+
+      <% } %>
+
+
+      <% if (typeof orders !== "undefined" && orders) { %>
+
+        <div class="about-box">
+
+          <h3>تعداد سفارش‌ها</h3>
+
+          <p>
+            <%= orders.length %> سفارش ثبت شده است.
+          </p>
+
+        </div>
+
+      <% } %>
+
+
+      <div class="hero-actions">
+
+        <a href="/" class="btn btn-primary">
+          مشاهده سایت
+        </a>
+
+        <a href="/admin/logout" class="btn">
+          خروج از حساب
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <div class="container footer-content">
+
+      <div>
+        <a href="/" class="logo">
+          نگار <span>سرا</span>
+        </a>
+
+        <p>
+          گالری دیجیتال هنر و خلاقیت
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="/">خانه</a>
+        <a href="/blog">بلاگ</a>
+        <a href="/admin/logout">خروج</a>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+      <p>
+        © ۱۴۰۵ نگار سرا | تمامی حقوق محفوظ است.
+      </p>
+    </div>
+
+  </footer>
+
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".nav-links");
+
+      if (nav) {
+        nav.classList.toggle("active");
+      }
+    }
+  </script>
+
+</body>
+</html>
