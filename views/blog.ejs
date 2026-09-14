@@ -70,10 +70,10 @@
 
             <article class="art-card">
 
-              <% if (post.image) { %>
+              <% if (post.cover) { %>
                 <div class="art-card-image">
                   <img
-                    src="<%= post.image %>"
+                    src="<%= post.cover %>"
                     alt="<%= post.title %>"
                   >
                 </div>
@@ -81,24 +81,32 @@
 
               <div class="art-card-content">
 
-                <% if (post.category) { %>
-                  <span class="art-category">
-                    <%= post.category %>
-                  </span>
-                <% } %>
+                <span class="art-category">
+                  نگار سرا
+                </span>
 
                 <h3>
                   <%= post.title %>
                 </h3>
 
                 <% if (post.excerpt) { %>
+
                   <p>
                     <%= post.excerpt %>
                   </p>
+
                 <% } else if (post.content) { %>
+
                   <p>
                     <%= post.content.substring(0, 150) %>
                     <% if (post.content.length > 150) { %>...<% } %>
+                  </p>
+
+                <% } %>
+
+                <% if (post.date) { %>
+                  <p>
+                    <%= post.date %>
                   </p>
                 <% } %>
 
@@ -150,8 +158,8 @@
 
       <div class="footer-links">
         <a href="/">خانه</a>
+        <a href="/blog">بلاگ</a>
         <a href="/#gallery">گالری</a>
-        <a href="/#about">درباره ما</a>
         <a href="/#contact">تماس با ما</a>
       </div>
 
