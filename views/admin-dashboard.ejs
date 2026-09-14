@@ -11,703 +11,771 @@
 
 <body>
 
-  <header class="site-header">
-    <div class="container navbar">
+<header class="site-header">
+  <div class="container navbar">
+
+    <a href="/" class="logo">
+      نگار <span>سرا</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="/">مشاهده سایت</a>
+      <a href="/blog">بلاگ</a>
+      <a href="/admin?tab=orders">سفارش‌ها</a>
+      <a href="/admin?tab=posts">مطالب</a>
+      <a href="/admin/logout">خروج</a>
+    </nav>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  </div>
+</header>
+
+
+<main>
+
+  <section class="hero">
+    <div class="container hero-content">
+
+      <span class="hero-label">NEGAR SARA ADMIN</span>
+
+      <h1>
+        پنل <span>مدیریت</span>
+      </h1>
+
+      <p>
+        مدیریت کامل مطالب و سفارش‌های نگار سرا
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="container">
+
+    <!-- منوی پنل -->
+
+    <div class="section-title">
+
+      <h2>مدیریت نگار سرا</h2>
+
+      <p class="section-subtitle">
+        بخش موردنظر خود را انتخاب کنید.
+      </p>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+      <article class="art-card">
+
+        <div class="art-card-content">
+
+          <span class="art-category">
+            مطالب
+          </span>
+
+          <h3>
+            مدیریت مطالب
+          </h3>
+
+          <p>
+            ایجاد، ویرایش و حذف مطالب بلاگ نگار سرا.
+          </p>
+
+          <a href="/admin?tab=posts" class="btn btn-primary">
+            مدیریت مطالب
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <article class="art-card">
+
+        <div class="art-card-content">
+
+          <span class="art-category">
+            سفارش‌ها
+          </span>
+
+          <h3>
+            مدیریت سفارش‌ها
+          </h3>
+
+          <p>
+            مشاهده سفارش‌ها و تغییر وضعیت آن‌ها.
+          </p>
+
+          <a href="/admin?tab=orders" class="btn btn-primary">
+            مدیریت سفارش‌ها
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <!-- ========================= -->
+    <!-- مدیریت مطالب -->
+    <!-- ========================= -->
+
+    <% if (tab === "posts") { %>
+
+      <div class="section-title">
+
+        <h2>
+          مدیریت مطالب
+        </h2>
+
+        <p class="section-subtitle">
+          مطالب بلاگ را از این بخش مدیریت کنید.
+        </p>
+
+      </div>
+
+
+      <!-- ایجاد مطلب جدید -->
+
+      <% if (editingPost && !editingPost.id) { %>
+
+        <div class="about-box">
+
+          <h3>
+            ایجاد مطلب جدید
+          </h3>
+
+          <form
+            action="/admin/posts"
+            method="POST"
+            class="contact-form"
+          >
+
+            <div class="form-group">
+
+              <label for="new-title">
+                عنوان مطلب
+              </label>
+
+              <input
+                type="text"
+                id="new-title"
+                name="title"
+                placeholder="عنوان مطلب"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="new-excerpt">
+                خلاصه مطلب
+              </label>
+
+              <textarea
+                id="new-excerpt"
+                name="excerpt"
+                rows="4"
+                placeholder="خلاصه کوتاه مطلب"
+              ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="new-content">
+                متن کامل مطلب
+              </label>
+
+              <textarea
+                id="new-content"
+                name="content"
+                rows="10"
+                placeholder="متن کامل مطلب"
+              ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="new-cover">
+                تصویر مطلب
+              </label>
+
+              <input
+                type="text"
+                id="new-cover"
+                name="cover"
+                placeholder="آدرس تصویر"
+              >
+
+            </div>
+
+
+            <div class="hero-actions">
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+              >
+                انتشار مطلب
+              </button>
+
+              <a
+                href="/admin?tab=posts"
+                class="btn"
+              >
+                انصراف
+              </a>
+
+            </div>
+
+          </form>
+
+        </div>
+
+
+      <!-- ویرایش مطلب -->
+
+      <% } else if (editingPost && editingPost.id) { %>
+
+        <div class="about-box">
+
+          <h3>
+            ویرایش مطلب
+          </h3>
+
+          <form
+            action="/admin/posts/<%= editingPost.id %>/edit"
+            method="POST"
+            class="contact-form"
+          >
+
+            <div class="form-group">
+
+              <label for="edit-title">
+                عنوان مطلب
+              </label>
+
+              <input
+                type="text"
+                id="edit-title"
+                name="title"
+                value="<%= editingPost.title || '' %>"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="edit-excerpt">
+                خلاصه مطلب
+              </label>
+
+              <textarea
+                id="edit-excerpt"
+                name="excerpt"
+                rows="4"
+              ><%= editingPost.excerpt || '' %></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="edit-content">
+                متن کامل مطلب
+              </label>
+
+              <textarea
+                id="edit-content"
+                name="content"
+                rows="10"
+              ><%= editingPost.content || '' %></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="edit-cover">
+                تصویر مطلب
+              </label>
+
+              <input
+                type="text"
+                id="edit-cover"
+                name="cover"
+                value="<%= editingPost.cover || '' %>"
+                placeholder="آدرس تصویر"
+              >
+
+            </div>
+
+
+            <div class="hero-actions">
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+              >
+                ذخیره تغییرات
+              </button>
+
+              <a
+                href="/admin?tab=posts"
+                class="btn"
+              >
+                انصراف
+              </a>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      <% } %>
+
+
+      <!-- دکمه ایجاد مطلب -->
+
+      <div class="about-box">
+
+        <div class="hero-actions">
+
+          <a
+            href="/admin/posts/new"
+            class="btn btn-primary"
+          >
+            + ایجاد مطلب جدید
+          </a>
+
+          <a
+            href="/blog"
+            class="btn"
+          >
+            مشاهده بلاگ
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- لیست مطالب -->
+
+      <% if (posts && posts.length > 0) { %>
+
+        <% posts.forEach(post => { %>
+
+          <article
+            class="art-card"
+            style="margin-bottom: 24px;"
+          >
+
+            <% if (post.cover && post.cover.startsWith("http")) { %>
+
+              <div class="art-card-image">
+
+                <img
+                  src="<%= post.cover %>"
+                  alt="<%= post.title %>"
+                >
+
+              </div>
+
+            <% } %>
+
+
+            <div class="art-card-content">
+
+              <span class="art-category">
+                مطلب
+              </span>
+
+              <h3>
+                <%= post.title %>
+              </h3>
+
+
+              <% if (post.excerpt) { %>
+
+                <p>
+                  <%= post.excerpt %>
+                </p>
+
+              <% } %>
+
+
+              <% if (post.date) { %>
+
+                <p>
+                  تاریخ انتشار:
+                  <%= post.date %>
+                </p>
+
+              <% } %>
+
+
+              <% if (post.author) { %>
+
+                <p>
+                  نویسنده:
+                  <%= post.author %>
+                </p>
+
+              <% } %>
+
+
+              <div class="hero-actions">
+
+                <a
+                  href="/post/<%= post.slug %>"
+                  class="btn"
+                >
+                  مشاهده
+                </a>
+
+
+                <a
+                  href="/admin/posts/<%= post.id %>/edit"
+                  class="btn btn-primary"
+                >
+                  ویرایش
+                </a>
+
+
+                <form
+                  action="/admin/posts/<%= post.id %>/delete"
+                  method="POST"
+                  style="display:inline;"
+                  onsubmit="return confirm('آیا از حذف این مطلب مطمئن هستید؟');"
+                >
+
+                  <button
+                    type="submit"
+                    class="btn"
+                  >
+                    حذف
+                  </button>
+
+                </form>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        <% }) %>
+
+
+      <% } else { %>
+
+        <div class="about-box">
+
+          <h3>
+            هنوز مطلبی وجود ندارد.
+          </h3>
+
+          <p>
+            برای شروع، اولین مطلب خود را ایجاد کنید.
+          </p>
+
+        </div>
+
+      <% } %>
+
+
+    <!-- ========================= -->
+    <!-- مدیریت سفارش‌ها -->
+    <!-- ========================= -->
+
+    <% } else { %>
+
+      <div class="section-title">
+
+        <h2>
+          مدیریت سفارش‌ها
+        </h2>
+
+        <p class="section-subtitle">
+          سفارش‌های ثبت‌شده توسط کاربران در این بخش نمایش داده می‌شوند.
+        </p>
+
+      </div>
+
+
+      <% if (orders && orders.length > 0) { %>
+
+        <% orders.forEach(order => { %>
+
+          <article
+            class="art-card"
+            style="margin-bottom: 24px;"
+          >
+
+            <div class="art-card-content">
+
+              <span class="art-category">
+                سفارش #<%= order.id %>
+              </span>
+
+
+              <h3>
+                <%= order.name %>
+              </h3>
+
+
+              <p>
+                <strong>شماره تماس:</strong>
+                <%= order.phone %>
+              </p>
+
+
+              <p>
+                <strong>خدمت:</strong>
+                <%= order.service %>
+              </p>
+
+
+              <% if (order.budget) { %>
+
+                <p>
+                  <strong>بودجه:</strong>
+                  <%= order.budget %>
+                </p>
+
+              <% } %>
+
+
+              <% if (order.message) { %>
+
+                <p>
+                  <strong>پیام:</strong>
+                  <%= order.message %>
+                </p>
+
+              <% } %>
+
+
+              <% if (order.createdAt) { %>
+
+                <p>
+                  <strong>تاریخ ثبت:</strong>
+                  <%= order.createdAt %>
+                </p>
+
+              <% } %>
+
+
+              <p>
+                <strong>وضعیت فعلی:</strong>
+                <%= order.status %>
+              </p>
+
+
+              <div class="hero-actions">
+
+                <!-- تغییر وضعیت -->
+
+                <form
+                  action="/admin/orders/<%= order.id %>/status"
+                  method="POST"
+                >
+
+                  <select name="status">
+
+                    <option
+                      value="جدید"
+                      <%= order.status === "جدید" ? "selected" : "" %>
+                    >
+                      جدید
+                    </option>
+
+                    <option
+                      value="در حال بررسی"
+                      <%= order.status === "در حال بررسی" ? "selected" : "" %>
+                    >
+                      در حال بررسی
+                    </option>
+
+                    <option
+                      value="تکمیل شده"
+                      <%= order.status === "تکمیل شده" ? "selected" : "" %>
+                    >
+                      تکمیل شده
+                    </option>
+
+                    <option
+                      value="لغو شده"
+                      <%= order.status === "لغو شده" ? "selected" : "" %>
+                    >
+                      لغو شده
+                    </option>
+
+                  </select>
+
+
+                  <button
+                    type="submit"
+                    class="btn btn-primary"
+                  >
+                    تغییر وضعیت
+                  </button>
+
+                </form>
+
+
+                <!-- حذف سفارش -->
+
+                <form
+                  action="/admin/orders/<%= order.id %>/delete"
+                  method="POST"
+                  onsubmit="return confirm('آیا از حذف این سفارش مطمئن هستید؟');"
+                >
+
+                  <button
+                    type="submit"
+                    class="btn"
+                  >
+                    حذف سفارش
+                  </button>
+
+                </form>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        <% }) %>
+
+
+      <% } else { %>
+
+        <div class="about-box">
+
+          <h3>
+            هنوز سفارشی ثبت نشده است.
+          </h3>
+
+          <p>
+            سفارش‌های جدید کاربران در این قسمت نمایش داده خواهند شد.
+          </p>
+
+        </div>
+
+      <% } %>
+
+    <% } %>
+
+
+    <!-- دکمه‌های پایین -->
+
+    <div class="hero-actions">
+
+      <a
+        href="/"
+        class="btn btn-primary"
+      >
+        مشاهده سایت
+      </a>
+
+      <a
+        href="/admin/logout"
+        class="btn"
+      >
+        خروج از حساب
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container footer-content">
+
+    <div>
 
       <a href="/" class="logo">
         نگار <span>سرا</span>
       </a>
 
-      <nav class="nav-links">
-        <a href="/">مشاهده سایت</a>
-        <a href="/blog">بلاگ</a>
-        <a href="/admin?tab=orders">سفارش‌ها</a>
-        <a href="/admin?tab=posts">مطالب</a>
-        <a href="/admin/logout">خروج</a>
-      </nav>
-
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
-    </div>
-  </header>
-
-
-  <main>
-
-    <section class="hero">
-      <div class="container hero-content">
-
-        <span class="hero-label">NEGAR SARA ADMIN</span>
-
-        <h1>
-          پنل <span>مدیریت</span>
-        </h1>
-
-        <p>
-          مدیریت مطالب و سفارش‌های نگار سرا
-        </p>
-
-      </div>
-    </section>
-
-
-    <section class="container">
-
-      <div class="section-title">
-
-        <h2>مدیریت نگار سرا</h2>
-
-        <p class="section-subtitle">
-          از این بخش می‌توانید مطالب و سفارش‌های سایت را مدیریت کنید.
-        </p>
-
-      </div>
-
-
-      <!-- آمار -->
-
-      <div class="gallery-grid">
-
-        <article class="art-card">
-
-          <div class="art-card-content">
-
-            <span class="art-category">
-              مطالب
-            </span>
-
-            <h3>
-              <%= posts.length %>
-            </h3>
-
-            <p>
-              تعداد مطالب ثبت‌شده در سایت
-            </p>
-
-            <a href="/admin?tab=posts" class="btn">
-              مدیریت مطالب
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <article class="art-card">
-
-          <div class="art-card-content">
-
-            <span class="art-category">
-              سفارش‌ها
-            </span>
-
-            <h3>
-              <%= orders.length %>
-            </h3>
-
-            <p>
-              تعداد سفارش‌های ثبت‌شده
-            </p>
-
-            <a href="/admin?tab=orders" class="btn">
-              مدیریت سفارش‌ها
-            </a>
-
-          </div>
-
-        </article>
-
-      </div>
-
-
-      <!-- بخش مطالب -->
-
-      <% if (tab === "posts") { %>
-
-        <div class="section-title">
-
-          <h2>
-            مدیریت مطالب
-          </h2>
-
-          <p class="section-subtitle">
-            ایجاد، ویرایش و حذف مطالب بلاگ
-          </p>
-
-        </div>
-
-
-        <div class="about-box">
-
-          <div class="hero-actions">
-
-            <a href="/admin/posts/new" class="btn btn-primary">
-              + ایجاد مطلب جدید
-            </a>
-
-            <a href="/blog" class="btn">
-              مشاهده بلاگ
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <% if (editingPost && (editingPost.id || editingPost.title || editingPost.excerpt || editingPost.content || editingPost.cover)) { %>
-
-          <div class="about-box">
-
-            <h3>
-              ویرایش مطلب
-            </h3>
-
-            <form
-              action="/admin/posts/<%= editingPost.id %>/edit"
-              method="POST"
-              class="contact-form"
-            >
-
-              <div class="form-group">
-
-                <label for="title">
-                  عنوان مطلب
-                </label>
-
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value="<%= editingPost.title || '' %>"
-                  required
-                >
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label for="excerpt">
-                  خلاصه مطلب
-                </label>
-
-                <textarea
-                  id="excerpt"
-                  name="excerpt"
-                  rows="4"
-                ><%= editingPost.excerpt || '' %></textarea>
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label for="content">
-                  متن کامل مطلب
-                </label>
-
-                <textarea
-                  id="content"
-                  name="content"
-                  rows="10"
-                ><%= editingPost.content || '' %></textarea>
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label for="cover">
-                  تصویر مطلب
-                </label>
-
-                <input
-                  type="text"
-                  id="cover"
-                  name="cover"
-                  value="<%= editingPost.cover || '' %>"
-                  placeholder="آدرس تصویر"
-                >
-
-              </div>
-
-
-              <div class="hero-actions">
-
-                <button type="submit" class="btn btn-primary">
-                  ذخیره تغییرات
-                </button>
-
-                <a href="/admin?tab=posts" class="btn">
-                  انصراف
-                </a>
-
-              </div>
-
-            </form>
-
-          </div>
-
-        <% } else if (editingPost && !editingPost.id) { %>
-
-          <div class="about-box">
-
-            <h3>
-              ایجاد مطلب جدید
-            </h3>
-
-            <form
-              action="/admin/posts"
-              method="POST"
-              class="contact-form"
-            >
-
-              <div class="form-group">
-
-                <label for="new-title">
-                  عنوان مطلب
-                </label>
-
-                <input
-                  type="text"
-                  id="new-title"
-                  name="title"
-                  placeholder="عنوان مطلب را وارد کنید"
-                  required
-                >
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label for="new-excerpt">
-                  خلاصه مطلب
-                </label>
-
-                <textarea
-                  id="new-excerpt"
-                  name="excerpt"
-                  rows="4"
-                  placeholder="خلاصه‌ای کوتاه از مطلب"
-                ></textarea>
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label for="new-content">
-                  متن کامل مطلب
-                </label>
-
-                <textarea
-                  id="new-content"
-                  name="content"
-                  rows="10"
-                  placeholder="متن کامل مطلب را وارد کنید"
-                ></textarea>
-
-              </div>
-
-
-              <div class="form-group">
-
-                <label for="new-cover">
-                  تصویر مطلب
-                </label>
-
-                <input
-                  type="text"
-                  id="new-cover"
-                  name="cover"
-                  placeholder="آدرس تصویر"
-                >
-
-              </div>
-
-
-              <div class="hero-actions">
-
-                <button type="submit" class="btn btn-primary">
-                  انتشار مطلب
-                </button>
-
-                <a href="/admin?tab=posts" class="btn">
-                  انصراف
-                </a>
-
-              </div>
-
-            </form>
-
-          </div>
-
-        <% } %>
-
-
-        <% if (posts.length > 0) { %>
-
-          <% posts.forEach(post => { %>
-
-            <article class="art-card" style="margin-bottom: 24px;">
-
-              <% if (post.cover) { %>
-
-                <div class="art-card-image">
-
-                  <img
-                    src="<%= post.cover %>"
-                    alt="<%= post.title %>"
-                  >
-
-                </div>
-
-              <% } %>
-
-
-              <div class="art-card-content">
-
-                <span class="art-category">
-                  مطلب
-                </span>
-
-                <h3>
-                  <%= post.title %>
-                </h3>
-
-                <% if (post.excerpt) { %>
-
-                  <p>
-                    <%= post.excerpt %>
-                  </p>
-
-                <% } %>
-
-
-                <% if (post.date) { %>
-
-                  <p>
-                    تاریخ: <%= post.date %>
-                  </p>
-
-                <% } %>
-
-
-                <div class="hero-actions">
-
-                  <a
-                    href="/post/<%= post.slug %>"
-                    class="btn"
-                  >
-                    مشاهده
-                  </a>
-
-                  <a
-                    href="/admin/posts/<%= post.id %>/edit"
-                    class="btn btn-primary"
-                  >
-                    ویرایش
-                  </a>
-
-
-                  <form
-                    action="/admin/posts/<%= post.id %>/delete"
-                    method="POST"
-                    style="display:inline;"
-                    onsubmit="return confirm('آیا از حذف این مطلب مطمئن هستید؟');"
-                  >
-
-                    <button
-                      type="submit"
-                      class="btn"
-                    >
-                      حذف
-                    </button>
-
-                  </form>
-
-                </div>
-
-              </div>
-
-            </article>
-
-          <% }) %>
-
-        <% } else { %>
-
-          <div class="about-box">
-
-            <h3>
-              هنوز مطلبی ثبت نشده است.
-            </h3>
-
-            <p>
-              برای شروع، یک مطلب جدید ایجاد کنید.
-            </p>
-
-          </div>
-
-        <% } %>
-
-
-      <!-- بخش سفارش‌ها -->
-
-      <% } else { %>
-
-        <div class="section-title">
-
-          <h2>
-            مدیریت سفارش‌ها
-          </h2>
-
-          <p class="section-subtitle">
-            مشاهده و مدیریت سفارش‌های ثبت‌شده
-          </p>
-
-        </div>
-
-
-        <% if (orders.length > 0) { %>
-
-          <% orders.forEach(order => { %>
-
-            <article class="art-card" style="margin-bottom: 24px;">
-
-              <div class="art-card-content">
-
-                <span class="art-category">
-                  سفارش #<%= order.id %>
-                </span>
-
-
-                <h3>
-                  <%= order.name %>
-                </h3>
-
-
-                <p>
-                  <strong>تلفن:</strong>
-                  <%= order.phone %>
-                </p>
-
-
-                <p>
-                  <strong>خدمت:</strong>
-                  <%= order.service %>
-                </p>
-
-
-                <% if (order.budget) { %>
-
-                  <p>
-                    <strong>بودجه:</strong>
-                    <%= order.budget %>
-                  </p>
-
-                <% } %>
-
-
-                <% if (order.message) { %>
-
-                  <p>
-                    <strong>پیام:</strong>
-                    <%= order.message %>
-                  </p>
-
-                <% } %>
-
-
-                <% if (order.createdAt) { %>
-
-                  <p>
-                    <strong>تاریخ ثبت:</strong>
-                    <%= order.createdAt %>
-                  </p>
-
-                <% } %>
-
-
-                <p>
-                  <strong>وضعیت:</strong>
-                  <%= order.status %>
-                </p>
-
-
-                <div class="hero-actions">
-
-                  <form
-                    action="/admin/orders/<%= order.id %>/status"
-                    method="POST"
-                  >
-
-                    <select
-                      name="status"
-                      onchange="this.form.submit()"
-                    >
-
-                      <option
-                        value="جدید"
-                        <%= order.status === "جدید" ? "selected" : "" %>
-                      >
-                        جدید
-                      </option>
-
-                      <option
-                        value="در حال بررسی"
-                        <%= order.status === "در حال بررسی" ? "selected" : "" %>
-                      >
-                        در حال بررسی
-                      </option>
-
-                      <option
-                        value="تکمیل شده"
-                        <%= order.status === "تکمیل شده" ? "selected" : "" %>
-                      >
-                        تکمیل شده
-                      </option>
-
-                      <option
-                        value="لغو شده"
-                        <%= order.status === "لغو شده" ? "selected" : "" %>
-                      >
-                        لغو شده
-                      </option>
-
-                    </select>
-
-                  </form>
-
-
-                  <form
-                    action="/admin/orders/<%= order.id %>/delete"
-                    method="POST"
-                    onsubmit="return confirm('آیا از حذف این سفارش مطمئن هستید؟');"
-                  >
-
-                    <button
-                      type="submit"
-                      class="btn"
-                    >
-                      حذف سفارش
-                    </button>
-
-                  </form>
-
-                </div>
-
-              </div>
-
-            </article>
-
-          <% }) %>
-
-
-        <% } else { %>
-
-          <div class="about-box">
-
-            <h3>
-              هنوز سفارشی ثبت نشده است.
-            </h3>
-
-            <p>
-              وقتی کاربری از فرم سفارش سایت استفاده کند، سفارش اینجا نمایش داده می‌شود.
-            </p>
-
-          </div>
-
-        <% } %>
-
-      <% } %>
-
-
-      <div class="hero-actions">
-
-        <a href="/" class="btn btn-primary">
-          مشاهده سایت
-        </a>
-
-        <a href="/admin/logout" class="btn">
-          خروج از حساب
-        </a>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <footer class="site-footer">
-
-    <div class="container footer-content">
-
-      <div>
-
-        <a href="/" class="logo">
-          نگار <span>سرا</span>
-        </a>
-
-        <p>
-          گالری دیجیتال هنر و خلاقیت
-        </p>
-
-      </div>
-
-
-      <div class="footer-links">
-
-        <a href="/">
-          خانه
-        </a>
-
-        <a href="/blog">
-          بلاگ
-        </a>
-
-        <a href="/admin?tab=posts">
-          مطالب
-        </a>
-
-        <a href="/admin?tab=orders">
-          سفارش‌ها
-        </a>
-
-        <a href="/admin/logout">
-          خروج
-        </a>
-
-      </div>
-
-    </div>
-
-
-    <div class="container footer-bottom">
-
       <p>
-        © ۱۴۰۵ نگار سرا | تمامی حقوق محفوظ است.
+        گالری دیجیتال هنر و خلاقیت
       </p>
 
     </div>
 
-  </footer>
+
+    <div class="footer-links">
+
+      <a href="/">
+        خانه
+      </a>
+
+      <a href="/blog">
+        بلاگ
+      </a>
+
+      <a href="/admin?tab=posts">
+        مطالب
+      </a>
+
+      <a href="/admin?tab=orders">
+        سفارش‌ها
+      </a>
+
+      <a href="/admin/logout">
+        خروج
+      </a>
+
+    </div>
+
+  </div>
 
 
-  <script>
+  <div class="container footer-bottom">
 
-    function toggleMenu() {
+    <p>
+      © ۱۴۰۵ نگار سرا | تمامی حقوق محفوظ است.
+    </p>
 
-      const nav = document.querySelector(".nav-links");
+  </div>
 
-      if (nav) {
-        nav.classList.toggle("active");
-      }
+</footer>
 
+
+<script>
+
+  function toggleMenu() {
+
+    const nav = document.querySelector(".nav-links");
+
+    if (nav) {
+      nav.classList.toggle("active");
     }
 
-  </script>
+  }
+
+</script>
 
 </body>
 </html>
