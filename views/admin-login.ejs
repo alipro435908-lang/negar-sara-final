@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ورود مدیریت | نگار سرا</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container navbar">
+
+      <a href="/" class="logo">
+        نگار <span>سرا</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="/">خانه</a>
+        <a href="/blog">بلاگ</a>
+      </nav>
+
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-content">
+
+        <span class="hero-label">NEGAR SARA ADMIN</span>
+
+        <h1>
+          ورود به <span>مدیریت</span>
+        </h1>
+
+        <p>
+          برای مدیریت مطالب و سفارش‌ها وارد حساب مدیریت شوید.
+        </p>
+
+      </div>
+    </section>
+
+
+    <section class="container">
+
+      <div class="contact-form">
+
+        <form action="/admin/login" method="POST">
+
+          <div class="form-group">
+            <label for="username">نام کاربری</label>
+
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="نام کاربری"
+              required
+              autocomplete="username"
+            >
+          </div>
+
+
+          <div class="form-group">
+            <label for="password">رمز عبور</label>
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="رمز عبور"
+              required
+              autocomplete="current-password"
+            >
+          </div>
+
+
+          <% if (typeof error !== "undefined" && error) { %>
+            <p style="color: #e57373; margin-bottom: 20px;">
+              <%= error %>
+            </p>
+          <% } %>
+
+
+          <button type="submit" class="btn btn-primary">
+            ورود به پنل مدیریت
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+
+    <div class="container footer-content">
+
+      <div>
+        <a href="/" class="logo">
+          نگار <span>سرا</span>
+        </a>
+
+        <p>
+          گالری دیجیتال هنر و خلاقیت
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="/">خانه</a>
+        <a href="/blog">بلاگ</a>
+      </div>
+
+    </div>
+
+    <div class="container footer-bottom">
+      <p>
+        © ۱۴۰۵ نگار سرا | تمامی حقوق محفوظ است.
+      </p>
+    </div>
+
+  </footer>
+
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".nav-links");
+
+      if (nav) {
+        nav.classList.toggle("active");
+      }
+    }
+  </script>
+
+</body>
+</html>
