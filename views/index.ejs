@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +17,10 @@
 
 <body>
 
-  <!-- Header -->
+  <!-- ================= HEADER ================= -->
+
   <header class="site-header">
+
     <div class="container navbar">
 
       <a href="/" class="logo">
@@ -64,17 +67,21 @@
       </nav>
 
     </div>
+
   </header>
 
 
+  <!-- ================= MAIN ================= -->
+
   <main>
 
-    <!-- Hero -->
+    <!-- ================= HERO ================= -->
+
     <section id="home" class="hero">
 
       <div class="container">
 
-        <div class="hero-content">
+        <div class="hero-content fade-in">
 
           <div class="hero-label">
             NEGAR SARA GALLERY
@@ -109,29 +116,39 @@
     </section>
 
 
-    <!-- Gallery -->
+    <!-- ================= GALLERY ================= -->
+
     <section id="gallery">
 
       <div class="container">
 
         <div class="section-title">
-          <h2>گالری آثار هنری</h2>
+
+          <h2>
+            گالری آثار هنری
+          </h2>
+
           <p class="section-subtitle">
-            مجموعه‌ای از آثار منتخب نگار سرا
+            مجموعه‌ای از آثار منتخب هنری نگار سرا
           </p>
+
         </div>
 
 
         <div class="gallery-grid">
 
+          <!-- ART 1 -->
+
           <article class="art-card">
 
             <div class="art-card-image">
+
               <img
                 src="/images/art-1.jpg"
                 alt="اثر هنری زیبایی بی‌نهایت"
                 loading="lazy"
               >
+
             </div>
 
             <div class="art-card-content">
@@ -153,14 +170,18 @@
           </article>
 
 
+          <!-- ART 2 -->
+
           <article class="art-card">
 
             <div class="art-card-image">
+
               <img
                 src="/images/art-2.jpg"
                 alt="اثر هنری رویای طلایی"
                 loading="lazy"
               >
+
             </div>
 
             <div class="art-card-content">
@@ -182,14 +203,18 @@
           </article>
 
 
+          <!-- ART 3 -->
+
           <article class="art-card">
 
             <div class="art-card-image">
+
               <img
                 src="/images/art-3.jpg"
                 alt="اثر هنری سکوت رنگ‌ها"
                 loading="lazy"
               >
+
             </div>
 
             <div class="art-card-content">
@@ -217,7 +242,8 @@
     </section>
 
 
-    <!-- Featured -->
+    <!-- ================= FEATURED ================= -->
+
     <section>
 
       <div class="container">
@@ -225,11 +251,13 @@
         <div class="featured-art">
 
           <div>
+
             <img
               src="/images/art-1.jpg"
               alt="اثر منتخب نگار سرا"
               loading="lazy"
             >
+
           </div>
 
           <div>
@@ -260,17 +288,22 @@
     </section>
 
 
-    <!-- Services -->
+    <!-- ================= SERVICES ================= -->
+
     <section id="services">
 
       <div class="container">
 
         <div class="section-title">
-          <h2>خدمات نگار سرا</h2>
+
+          <h2>
+            خدمات نگار سرا
+          </h2>
 
           <p class="section-subtitle">
             خدمات حرفه‌ای برای پروژه‌های خلاقانه شما
           </p>
+
         </div>
 
 
@@ -302,25 +335,6 @@
 
             <% }) %>
 
-          <% } else { %>
-
-            <article class="art-card">
-
-              <div class="art-card-content">
-
-                <h3>
-                  خدمات هنری و طراحی
-                </h3>
-
-                <p>
-                  ارائه خدمات حرفه‌ای در زمینه هنر،
-                  طراحی و پروژه‌های خلاقانه.
-                </p>
-
-              </div>
-
-            </article>
-
           <% } %>
 
         </div>
@@ -330,7 +344,8 @@
     </section>
 
 
-    <!-- Latest Blog Posts -->
+    <!-- ================= LATEST POSTS ================= -->
+
     <section>
 
       <div class="container">
@@ -391,8 +406,8 @@
                   <% } else if (post.content) { %>
 
                     <p>
-                      <%= post.content.substring(0, 120) %>
-                      <% if (post.content.length > 120) { %>
+                      <%= post.content.substring(0, 150) %>
+                      <% if (post.content.length > 150) { %>
                         ...
                       <% } %>
                     </p>
@@ -403,6 +418,7 @@
                   <% if (post.date) { %>
 
                     <p>
+                      تاریخ انتشار:
                       <%= post.date %>
                     </p>
 
@@ -450,7 +466,8 @@
     </section>
 
 
-    <!-- About -->
+    <!-- ================= ABOUT ================= -->
+
     <section id="about">
 
       <div class="container">
@@ -475,7 +492,8 @@
     </section>
 
 
-    <!-- Contact / Order -->
+    <!-- ================= ORDER ================= -->
+
     <section id="contact">
 
       <div class="container">
@@ -588,20 +606,6 @@
 
                 <% }) %>
 
-              <% } else { %>
-
-                <option value="هویت بصری و طراحی گرافیک">
-                  هویت بصری و طراحی گرافیک
-                </option>
-
-                <option value="عکاسی مفهومی و تبلیغاتی">
-                  عکاسی مفهومی و تبلیغاتی
-                </option>
-
-                <option value="کارگردانی هنری پروژه">
-                  کارگردانی هنری پروژه
-                </option>
-
               <% } %>
 
             </select>
@@ -656,12 +660,14 @@
   </main>
 
 
-  <!-- Footer -->
+  <!-- ================= FOOTER ================= -->
+
   <footer class="site-footer">
 
     <div class="container">
 
       <div class="footer-content">
+
 
         <div>
 
@@ -718,6 +724,7 @@
 
         </div>
 
+
       </div>
 
 
@@ -734,14 +741,20 @@
   </footer>
 
 
+  <!-- ================= JAVASCRIPT ================= -->
+
   <script>
+
     function toggleMenu() {
+
       const nav = document.getElementById("navLinks");
 
       if (nav) {
         nav.classList.toggle("open");
       }
+
     }
+
 
     document
       .querySelectorAll(".nav-links a")
@@ -758,7 +771,9 @@
         });
 
       });
+
   </script>
 
 </body>
+
 </html>
