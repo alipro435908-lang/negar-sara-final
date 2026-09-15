@@ -1,12 +1,32 @@
 [
   {
-    "id": 1,
-    "title": "اولین مطلب نگار سرا",
-    "slug": "avalin-matlab-negar-sara",
-    "excerpt": "معرفی اولین مطلب گالری دیجیتال نگار سرا",
-    "content": "این متن کامل اولین مطلب است.",
+    "id": "1",
+    "slug": "zibayi-binahayat",
+    "title": "زیبایی بی‌نهایت",
+    "excerpt": "هنر مدرن و خلاقانه",
+    "content": "این یک نمونه مطلب برای نگار سرا است.",
     "cover": "/images/art-1.jpg",
-    "date": "1405/06/24",
-    "author": "مدیر"
+    "date": "1405-01-01",
+    "author": "نگار"
+  },
+  {
+    "id": "2",
+    "slug": "royaye-talayi",
+    "title": "رویای طلایی",
+    "excerpt": "ترکیب رنگ و احساس",
+    "content": "یک اثر دیجیتال زیبا.",
+    "cover": "/images/art-2.jpg",
+    "date": "1405-01-02",
+    "author": "نگار"
+  },
+  {
+    "id": "3",
+    "slug": "sokoot-rangha",
+    "title": "سکوت رنگ‌ها",
+    "excerpt": "نگاهی متفاوت به هنر",
+    "content": "داستان یک اثر خلاقانه.",
+    "cover": "/images/art-3.jpg",
+    "date": "1405-01-03",
+    "author": "نگار"
   }
 ]
