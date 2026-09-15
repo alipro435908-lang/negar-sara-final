@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "سایت استودیوی خدمات خلاقانه نگار سرا - نمونه‌کار، وبلاگ و پنل مدیریت سفارش",
   "main": "server.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
